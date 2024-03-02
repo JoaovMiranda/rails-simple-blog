@@ -1,15 +1,36 @@
 <h1>Articles</h1>
 
-Our blog has <%= Article.public_count %> articles and counting!
+<div class="d-flex justify-content-between">
+<div> Our blog has <%= Article.public_count %> articles and counting! </div>
+<%= link_to "New Article", new_article_path, class: "btn btn-primary" %>
+</div>
+<div>
+		<ul class="list-group mt-3 text-white">
+        <% @articles.each do |article| %>
+    	<% unless article.archived? %>
+		  <li class="list-group-item d-flex justify-content-between align-content-center">
+		  	<div class="d-flex flex-row">
+		  		<div class="ml-2">
+		  			<h6 class="mb-0"><%= link_to article.title, article %></h6>
+		  			<div class="about">
+		  				<%# <span>22 Files</span> colocar tamanho do texto%>
+		  				<%# <span>Jan 21, 2020</span> colocar data %>
+		  			</div>
+		  		</div>
+				<div>
+					<tr>
+    					<td><%= link_to 'Show', article_path(article) %></td>
+    					<td><%= link_to 'Edit', edit_article_path(article) %></td>
+    					<td><%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  					</tr>
+				</div>
+		  	</div>
+		  </li>
+        <% end %>
+  		<% end %>
+    </ul>
+</div>
 
-<ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
 
-<%= link_to "New Article", new_article_path %>
+
+

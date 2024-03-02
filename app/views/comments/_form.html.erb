@@ -1,17 +1,26 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
+   <div class="field form-group">
+    <%= form.label :commenter %><br />
+    <%= form.text_field :commenter, autofocus: true, autocomplete: "commenter", class:'field form-control', placeholder: 'Commenter' %>
+  </div>
+
+   <div class="field form-group">
+
     <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
+    <%= form.text_area :body ,  class:'field form-control', placeholder: 'Content'%>
+   </div>
+
+    <div class="field form-group">
     <%= form.label :status %><br>
     <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+   </div>
+
+  <div class="actions mt-3">
+             <div class="row">
+    <div class="col text-center">
+    <%= form.submit%>
+   </div>
+   </div>
+   </div>
+
 <% end %>

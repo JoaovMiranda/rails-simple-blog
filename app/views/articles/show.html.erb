@@ -1,18 +1,43 @@
-<h1><%= @article.title %></h1>
-
-<p><%= @article.body %></p>
-
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-   <li><%= link_to "Destroy", article_path(@article), data: {
+<div class="card">
+  <div class="card-header">
+    <div style="display: flex;">
+      <h1><%= @article.title %></h1>
+      <div style="display: flex;">
+        <span><%= link_to "Edit", edit_article_path(@article) %></span>
+        <span><%= link_to "Destroy", article_path(@article), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+                  } %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <p><%= @article.body %></p>
+
+    <div style="display: flex;">
+    <p class="d-inline-flex gap-1">
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Comments
+  </a>
+</p>
+
+    </div>
+  </div>
+
+<div class="card-footer">
+  <div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <ul class="list-group">
+    <%= render @article.comments %>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
 
 
-<h2>Comments</h2>
-<%= render @article.comments %>
-
-<h2>Add a comment:</h2>
+  <div class="card card-body">
+    <h4>Add a comment:</h4>
 <%= render 'comments/form' %>
+  </div>
