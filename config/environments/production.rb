@@ -101,7 +101,7 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
     # Heroku deployment configuration
-    set :application, ENV['HEROKU_APP_NAME']
-    set :repo_url, ENV['HEROKU_REPO_URL']
-    set :branch, :main 
+  set :application, ENV['HEROKU_APP_NAME']
+  set :repo_url, ENV['HEROKU_REPO_URL']
+  set :branch, :main 
 end
