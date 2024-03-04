@@ -23,7 +23,6 @@ group :development do
 end
 
 group :production do
-  gem "web-console"
   gem 'pg', '~> 0.18.4'
 end
 
