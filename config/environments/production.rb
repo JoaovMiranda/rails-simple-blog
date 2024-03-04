@@ -1,4 +1,6 @@
 require "active_support/core_ext/integer/time"
+require 'figaro'
+Figaro.load
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -97,4 +99,9 @@ Rails.application.configure do
 
 
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+    # Heroku deployment configuration
+    set :application, ENV['HEROKU_APP_NAME']
+    set :repo_url, ENV['HEROKU_REPO_URL']
+    set :branch, :main 
 end
